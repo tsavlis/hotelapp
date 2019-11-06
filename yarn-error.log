@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add axios
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Thanos\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Users\Thanos\AppData\Local\Microsoft\WindowsApps;C:\Users\Thanos\AppData\Local\Yarn\bin;C:\Users\Thanos\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Thanos\AppData\Roaming\npm
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Thanos\projects\hotelapp\node_modules\anymatch\node_modules\arr-diff'
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-native-firebase/app": "^6.0.3",
+      "expo": "^35.0.0",
+      "firebase": "^7.2.3",
+      "moment": "^2.24.0",
+      "react": "16.8.3",
+      "react-dom": "16.8.3",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+      "react-native-elements": "^1.2.7",
+      "react-native-gesture-handler": "~1.3.0",
+      "react-native-reanimated": "~1.2.0",
+      "react-native-screens": "~1.0.0-alpha.23",
+      "react-native-web": "^0.11.7",
+      "react-navigation": "^4.0.10",
+      "redux": "^4.0.4",
+      "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "^7.1.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
