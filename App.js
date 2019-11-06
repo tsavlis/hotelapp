@@ -18,20 +18,41 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
-  componentDidMount() {
+  state = { user: "1" };
+  apicall = () => {
     axios
-      .get(`${FIREBASEURL}/Services`, {})
+      .get(
+        `${FIREBASEURL}/Services.json`,
+
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
       .then(function(response) {
         console.log(response);
       })
       .catch(function(error) {
         console.log(error);
       });
+  };
+  componentDidMount() {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword("tns@gmail.com", "111111")
+      .then(response => {
+        console.log("2");
+        this.setState({ user: response.user.uid });
+        this.apicall();
+      })
+      .catch(err => console.log(err));
   }
   render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
+        <Text> {this.state.user}</Text>
       </View>
     );
   }
