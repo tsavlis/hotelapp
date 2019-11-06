@@ -1,4 +1,4 @@
-import { Dimensions, Platform, AsyncStorage } from "react-native";
+import { Platform } from "react-native";
 
 export const FIREBASEURL = `https://hotel-app1.firebaseio.com/`;
 export const APIKEY = `AIzaSyDOpfqnT-cSV3HS9u5W5mLH-P-y66F0yac`;
