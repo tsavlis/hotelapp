@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import firebase from "firebase";
 import axios from "axios";
 import { FIREBASEURL } from "../src/components/Utils";
+import LottieView from "lottie-react-native";
+
 class LoadingScreen extends Component {
   componentDidMount() {
     this.checkIfLoggedIn();
+    this.animation.play();
   }
+
+  resetAnimation = () => {
+    this.animation.reset();
+    this.animation.play();
+  };
+
   apicall = uid => {
     axios
       .get(
@@ -44,8 +53,19 @@ class LoadingScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" />
+      <View style={styles.animationContainer}>
+        <LottieView
+          ref={animation => {
+            this.animation = animation;
+          }}
+          style={{
+            width: 400,
+            height: 400,
+            backgroundColor: "black"
+          }}
+          source={require("../assets/197-glow-loading.json")}
+        />
+        <Text style={{ color: "white", fontSize: 36 }}>Getting Ready...</Text>
       </View>
     );
   }
@@ -53,9 +73,13 @@ class LoadingScreen extends Component {
 export default LoadingScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  animationContainer: {
+    backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    flex: 1
+  },
+  buttonContainer: {
+    paddingTop: 20
   }
 });
