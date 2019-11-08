@@ -30,7 +30,8 @@ class DashboardScreen extends Component {
                   fontSize: 28,
                   textAlign: "center",
                   margin: 10,
-                  color: "white"
+                  color: "white",
+                  fontFamily: "regu1"
                 }}
               >
                 Get Started...
@@ -44,24 +45,24 @@ class DashboardScreen extends Component {
           >
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text>Checkin</Text>
+                <Text style={styles.item}>Checkin</Text>
               </View>
               <View style={styles.card}>
-                <Text>Room Service</Text>
+                <Text style={styles.item}>Room Service</Text>
               </View>
               <View style={styles.card}>
-                <Text>Spa</Text>
+                <Text style={styles.item}>Spa</Text>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text>Suggestions</Text>
+                <Text style={styles.item}>Suggestions</Text>
               </View>
               <View style={styles.card}>
-                <Text>Transfers</Text>
+                <Text style={styles.item}>Transfers</Text>
               </View>
               <View style={styles.card}>
-                <Text>Other</Text>
+                <Text style={styles.item}>Other</Text>
               </View>
             </View>
           </View>
@@ -80,8 +81,12 @@ const styles = {
     padding: 40
     // marginTop: 150
   },
+  item: {
+    fontFamily: "regu1",
+    color: "#82898c"
+  },
   card: {
-    backgroundColor: "white",
+    backgroundColor: "#eeece3",
     height: 100,
     width: "33%",
     margin: 10,
@@ -103,7 +108,7 @@ const styles = {
   },
   text: {
     fontSize: 30,
-    fontWeight: "bold",
+    fontFamily: "regu1",
     color: "white"
     // marginBottom: 150
   },

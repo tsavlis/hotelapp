@@ -5,15 +5,28 @@ import LoginScreen from "./screens/LoginScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import LoadingScreen from "./screens/LoadingScreen";
 import * as firebase from "firebase";
+import * as Font from "expo-font";
+import { AppLoading, SplashScreen } from "expo";
+
 import { firebaseConfig } from "./src/config/config";
 firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
-  componentDidMount() {
-    // this.apicall();
+  state = {
+    fontloaded: false
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      regu1: require("./assets/Fonts/Courgette-Regular.ttf")
+    });
+    this.setState({ fontloaded: true });
   }
   render() {
-    return <AppNavigator />;
+    if (!this.state.fontloaded) {
+      return <AppLoading />;
+    } else {
+      return <AppNavigator />;
+    }
   }
 }
 
