@@ -47,7 +47,7 @@ class LoadingScreen extends Component {
           }}
           source={require("../assets/197-glow-loading.json")}
         />
-        <Text style={{ color: "white", fontSize: 36, fontFamily: "regu1" }}>
+        <Text style={{ color: "#00fff7", fontSize: 36, fontFamily: "regu1" }}>
           Getting Ready...
         </Text>
       </View>

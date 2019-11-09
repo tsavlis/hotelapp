@@ -5,10 +5,10 @@ import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
 import home from "../assets/home1.jpeg";
 import FadeInView from "./FadeInView";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 class DashboardScreen extends Component {
   render() {
-    console.log(this.props.services);
     return (
       <ImageBackground style={styles.image} source={home}>
         <View style={styles.container}>
@@ -49,24 +49,46 @@ class DashboardScreen extends Component {
           >
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[0].name}</Text>
+                <Ionicons name="md-clock" size={35} color="black" />
+                <Text style={styles.item}>
+                  {this.props.services[0] ? this.props.services[0].name : null}
+                </Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[1].name}</Text>
+                <FontAwesome name="home" size={30} color="black" />
+
+                <Text style={styles.item}>
+                  {this.props.services[1] ? this.props.services[1].name : null}
+                </Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[2].name}</Text>
+                <FontAwesome name="bell" size={30} color="black" />
+
+                <Text style={styles.item}>
+                  {this.props.services[2] ? this.props.services[2].name : null}
+                </Text>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[3].name}</Text>
+                <FontAwesome name="taxi" size={30} color="black" />
+
+                <Text style={styles.item}>
+                  {this.props.services[3] ? this.props.services[3].name : null}
+                </Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[4].name}</Text>
+                <Ionicons name="md-chatboxes" size={30} color="black" />
+                <Text style={styles.item}>
+                  {this.props.services[4] ? this.props.services[4].name : null}
+                </Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>{this.props.services[5].name}</Text>
+                <FontAwesome name="map" size={30} color="black" />
+
+                <Text style={styles.item}>
+                  {this.props.services[5] ? this.props.services[5].name : null}
+                </Text>
               </View>
             </View>
           </View>
@@ -97,10 +119,11 @@ const styles = {
   },
   item: {
     fontFamily: "regu1",
-    color: "#82898c"
+    color: "black",
+    marginTop: 5
   },
   card: {
-    backgroundColor: "#eeece3",
+    backgroundColor: "#bffffd",
     height: 100,
     width: "33%",
     margin: 10,
@@ -123,7 +146,7 @@ const styles = {
   text: {
     fontSize: 30,
     fontFamily: "regu1",
-    color: "white"
+    color: "#00fff7"
     // marginBottom: 150
   },
   subttext: {
