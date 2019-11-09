@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { View, Text, ImageBackground } from "react-native";
-import firebase from "firebase";
+
+import * as actions from "../src/store/actions";
+import { connect } from "react-redux";
 import home from "../assets/home1.jpeg";
 import FadeInView from "./FadeInView";
+
 class DashboardScreen extends Component {
   render() {
+    console.log(this.props.services);
     return (
       <ImageBackground style={styles.image} source={home}>
         <View style={styles.container}>
           <View
             style={{
-              flex: 1.7,
+              flex: 2,
               justifyContent: "space-evenly"
             }}
           >
@@ -40,29 +44,29 @@ class DashboardScreen extends Component {
           </View>
           <View
             style={{
-              flex: 1.3
+              flex: 1
             }}
           >
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text style={styles.item}>Checkin</Text>
+                <Text style={styles.item}>{this.props.services[0].name}</Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>Room Service</Text>
+                <Text style={styles.item}>{this.props.services[1].name}</Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>Spa</Text>
+                <Text style={styles.item}>{this.props.services[2].name}</Text>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.card}>
-                <Text style={styles.item}>Suggestions</Text>
+                <Text style={styles.item}>{this.props.services[3].name}</Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>Transfers</Text>
+                <Text style={styles.item}>{this.props.services[4].name}</Text>
               </View>
               <View style={styles.card}>
-                <Text style={styles.item}>Other</Text>
+                <Text style={styles.item}>{this.props.services[5].name}</Text>
               </View>
             </View>
           </View>
@@ -71,7 +75,17 @@ class DashboardScreen extends Component {
     );
   }
 }
-export default DashboardScreen;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    services: state.services.services
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(DashboardScreen);
 
 const styles = {
   container: {
@@ -98,8 +112,8 @@ const styles = {
     flex: 1,
     flexDirection: "row",
     width: "100%",
-    justifyContent: "space-evenly",
-    marginBottom: 10
+    justifyContent: "space-evenly"
+    // marginBottom: 10
   },
   image: {
     width: "100%",

@@ -6,9 +6,12 @@ import DashboardScreen from "./screens/DashboardScreen";
 import LoadingScreen from "./screens/LoadingScreen";
 import * as firebase from "firebase";
 import * as Font from "expo-font";
-import { AppLoading, SplashScreen } from "expo";
+import { AppLoading } from "expo";
 
+import { Provider } from "react-redux";
+import store from "./src/store/store";
 import { firebaseConfig } from "./src/config/config";
+
 firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
@@ -25,7 +28,11 @@ export default class App extends React.Component {
     if (!this.state.fontloaded) {
       return <AppLoading />;
     } else {
-      return <AppNavigator />;
+      return (
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
+      );
     }
   }
 }

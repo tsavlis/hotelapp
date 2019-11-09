@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import firebase from "firebase";
-import axios from "axios";
-import { FIREBASEURL } from "../src/components/Utils";
 import LottieView from "lottie-react-native";
-
+import * as actions from "../src/store/actions";
+import { connect } from "react-redux";
 class LoadingScreen extends Component {
-  componentDidMount() {
+  async componentDidMount() {
+    await this.props.getServices();
+
     this.checkIfLoggedIn();
     this.animation.play();
   }
@@ -16,31 +17,12 @@ class LoadingScreen extends Component {
     this.animation.play();
   };
 
-  apicall = uid => {
-    axios
-      .get(
-        `${FIREBASEURL}/Services.json`,
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }
-      )
-      .then(function(response) {
-        console.log(response.data);
-      })
-      .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
-  };
   checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(
       function(user) {
         // console.log("AUTH STATE CHANGED CALLED ");
         if (user) {
-          console.log(user);
-          this.apicall(user.uid);
+          // console.log(user);
           this.props.navigation.navigate("DashboardScreen", {
             user: user.email
           });
@@ -72,7 +54,17 @@ class LoadingScreen extends Component {
     );
   }
 }
-export default LoadingScreen;
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    services: state.services
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(LoadingScreen);
 
 const styles = StyleSheet.create({
   animationContainer: {
