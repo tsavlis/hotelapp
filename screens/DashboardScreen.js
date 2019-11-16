@@ -3,7 +3,7 @@ import { View, Text, ImageBackground } from "react-native";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
-import home from "../assets/hom2.jpg";
+import home from "../assets/hom3.jpg";
 import FadeInView from "./FadeInView";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -34,6 +34,7 @@ class DashboardScreen extends Component {
                   fontSize: 28,
                   textAlign: "center",
                   margin: 10,
+                  marginBottom: 100,
                   color: "white",
                   fontFamily: "regu1"
                 }}
@@ -123,7 +124,7 @@ const styles = {
     marginTop: 5
   },
   card: {
-    backgroundColor: "gray",
+    backgroundColor: "#2d669d",
     height: 100,
     width: "33%",
     margin: 10,
@@ -146,7 +147,7 @@ const styles = {
   text: {
     fontSize: 30,
     fontFamily: "regu1",
-    color: "white"
+    color: "#2d669d"
     // marginBottom: 150
   },
   subttext: {
