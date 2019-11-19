@@ -14,7 +14,7 @@ class DashboardScreen extends Component {
         <View style={styles.container}>
           <View
             style={{
-              flex: 2,
+              flex: 1.7,
               justifyContent: "space-evenly"
             }}
           >
@@ -34,7 +34,7 @@ class DashboardScreen extends Component {
                   fontSize: 28,
                   textAlign: "center",
                   margin: 10,
-                  marginBottom: 100,
+                  marginBottom: 70,
                   color: "white",
                   fontFamily: "regu1"
                 }}
@@ -45,7 +45,7 @@ class DashboardScreen extends Component {
           </View>
           <View
             style={{
-              flex: 1
+              flex: 1.3
             }}
           >
             <View style={styles.row}>
