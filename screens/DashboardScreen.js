@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
@@ -49,12 +49,15 @@ class DashboardScreen extends Component {
             }}
           >
             <View style={styles.row}>
-              <View style={styles.card}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => this.props.navigation.navigate("Checkin")}
+              >
                 <Ionicons name="md-clock" size={35} color="white" />
                 <Text style={styles.item}>
                   {this.props.services[0] ? this.props.services[0].name : null}
                 </Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.card}>
                 <FontAwesome name="home" size={30} color="white" />
 
@@ -105,10 +108,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(DashboardScreen);
+export default connect(mapStateToProps, actions)(DashboardScreen);
 
 const styles = {
   container: {

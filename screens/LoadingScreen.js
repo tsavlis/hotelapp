@@ -22,7 +22,7 @@ class LoadingScreen extends Component {
       function(user) {
         // console.log("AUTH STATE CHANGED CALLED ");
         if (user) {
-          // console.log(user);
+          //console.log(user);
           this.props.navigation.navigate("DashboardScreen", {
             user: user.email
           });
@@ -61,10 +61,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(LoadingScreen);
+export default connect(mapStateToProps, actions)(LoadingScreen);
 
 const styles = StyleSheet.create({
   animationContainer: {
