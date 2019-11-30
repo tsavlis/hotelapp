@@ -1,6 +1,7 @@
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 import LoginScreen from "./screens/LoginScreen";
 import DashboardScreen from "./screens/DashboardScreen";
@@ -54,11 +55,16 @@ export default class App extends React.Component {
   }
 }
 
+const BotMaterialNavigator = createMaterialBottomTabNavigator({
+  DashboardScreen,
+  LoadingScreen
+});
+
 const AppSwitchNavigator = createSwitchNavigator(
   {
     LoadingScreen,
     LoginScreen,
-    DashboardScreen
+    BotMaterialNavigator
   },
   {
     navigationOptions: {

@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
-import home from "../assets/hom3.jpg";
+import home from "../assets/home.jpg";
 import FadeInView from "./FadeInView";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -34,7 +34,7 @@ class DashboardScreen extends Component {
                   fontSize: 28,
                   textAlign: "center",
                   margin: 10,
-                  marginBottom: 70,
+                  marginTop: 70,
                   color: "white",
                   fontFamily: "regu1"
                 }}
@@ -108,7 +108,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, actions)(DashboardScreen);
+export default connect(
+  mapStateToProps,
+  actions
+)(DashboardScreen);
 
 const styles = {
   container: {
@@ -147,7 +150,7 @@ const styles = {
   text: {
     fontSize: 30,
     fontFamily: "regu1",
-    color: "#2d669d"
+    color: "white"
     // marginBottom: 150
   },
   subttext: {
