@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { View, Text, ImageBackground, Image, Dimensions } from "react-native";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
 import home from "../assets/home.jpg";
+import TexT from "../src/components/Text";
 import FadeInView from "./FadeInView";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import Card from "../src/components/Card";
+
+const { width, height } = Dimensions.get("window");
 
 class DashboardScreen extends Component {
   render() {
@@ -21,6 +24,15 @@ class DashboardScreen extends Component {
             <Text style={styles.text}>
               Hi {this.props.navigation.getParam("user", "default value")}
             </Text>
+            <Card center middle shadow style={{ flex: 0.1 }}>
+              <TexT medium height={40}>
+                10 August - 16 August
+              </TexT>
+              <TexT gray caption>
+                your reservation
+              </TexT>
+            </Card>
+
             <FadeInView
               duration={2000}
               style={{
@@ -31,70 +43,16 @@ class DashboardScreen extends Component {
             >
               <Text
                 style={{
-                  fontSize: 28,
+                  fontSize: 35,
                   textAlign: "center",
                   margin: 10,
-                  marginTop: 70,
                   color: "white",
                   fontFamily: "regu1"
                 }}
               >
-                Get Started...
+                Explore..
               </Text>
             </FadeInView>
-          </View>
-          <View
-            style={{
-              flex: 1.3
-            }}
-          >
-            <View style={styles.row}>
-              <TouchableOpacity
-                style={styles.card}
-                onPress={() => this.props.navigation.navigate("Checkin")}
-              >
-                <Ionicons name="md-clock" size={35} color="white" />
-                <Text style={styles.item}>
-                  {this.props.services[0] ? this.props.services[0].name : null}
-                </Text>
-              </TouchableOpacity>
-              <View style={styles.card}>
-                <FontAwesome name="home" size={30} color="white" />
-
-                <Text style={styles.item}>
-                  {this.props.services[1] ? this.props.services[1].name : null}
-                </Text>
-              </View>
-              <View style={styles.card}>
-                <FontAwesome name="bell" size={30} color="white" />
-
-                <Text style={styles.item}>
-                  {this.props.services[2] ? this.props.services[2].name : null}
-                </Text>
-              </View>
-            </View>
-            <View style={styles.row}>
-              <View style={styles.card}>
-                <FontAwesome name="taxi" size={30} color="white" />
-
-                <Text style={styles.item}>
-                  {this.props.services[3] ? this.props.services[3].name : null}
-                </Text>
-              </View>
-              <View style={styles.card}>
-                <Ionicons name="md-chatboxes" size={30} color="white" />
-                <Text style={styles.item}>
-                  {this.props.services[4] ? this.props.services[4].name : null}
-                </Text>
-              </View>
-              <View style={styles.card}>
-                <FontAwesome name="map" size={30} color="white" />
-
-                <Text style={styles.item}>
-                  {this.props.services[5] ? this.props.services[5].name : null}
-                </Text>
-              </View>
-            </View>
           </View>
         </View>
       </ImageBackground>
@@ -108,10 +66,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(DashboardScreen);
+export default connect(mapStateToProps, actions)(DashboardScreen);
 
 const styles = {
   container: {
