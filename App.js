@@ -25,95 +25,95 @@ import Channels from "./components/Channels";
 import LoadAssets from "./components/LoadAssets";
 const channels = [
   {
-    id: "killing-eve",
-    title: "Killing Eve",
-    subtitle: "Sorry baby, xoxo",
-    type: "Drama",
-    cover: require("./assets/covers/killing-eve.jpg")
+    id: "Room Service",
+    title: "Need a glass of campaigne?",
+    subtitle: "In your room with the press of a button!",
+    type: "Room Service",
+    cover: require("./assets/covers/roomservice.jpg")
   },
   {
-    id: "atlanta",
-    title: "Atlanta",
-    subtitle: "Can Earn work his way to success?",
-    type: "Comedy",
-    cover: require("./assets/covers/atlanta.jpg")
+    id: "Yaughts",
+    title: "Spectacular boats",
+    subtitle: "Looking for some sea adventures?",
+    type: "Boats",
+    cover: require("./assets/covers/boat.jpg")
   },
   {
-    id: "years-and-years",
-    title: "Years and years",
-    subtitle: "Can a family survive the future?",
-    type: "Drama",
-    cover: require("./assets/covers/years-and-years.jpg")
+    id: "luxury cars",
+    title: "Rent a car with private chauffer",
+    subtitle: "In need of some transportation?",
+    type: "Cars",
+    cover: require("./assets/covers/driver.jpg")
   },
   {
-    id: "gentleman-jack",
-    title: "Gentleman Jack",
-    subtitle: "The true story of a remarkable woman in search of a wife",
-    type: "Period Drama",
-    cover: require("./assets/covers/gentleman-jack.jpg")
+    id: "live concert",
+    title: "Upcoming events",
+    subtitle: "Lets get the party started!",
+    type: "Party",
+    cover: require("./assets/covers/partyevent.jpg")
   },
   {
-    id: "london-kills",
-    title: "London Kills",
-    subtitle: "A Met Police murder squad face intense cases",
-    type: "Crime Drama",
-    cover: require("./assets/covers/london-kills.jpg")
+    id: "Shopping assistants",
+    title: "Shopping assistants",
+    subtitle: "Need a second opinion and someone to carry your bags?",
+    type: "Shopping",
+    cover: require("./assets/covers/shopassistant.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Sunset",
+    title: "Amazing views",
+    subtitle: "best views in town hand-picked for you!",
+    type: "Sunset places",
+    cover: require("./assets/covers/sunset.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Relaxation",
+    title: "Relax therapy by proffesionals in your place",
+    subtitle: "Ready for some stress-free experiences?",
+    type: "Relaxation",
+    cover: require("./assets/covers/therapy.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Activities",
+    title: "Yoga groups",
+    subtitle: "Want to do some activities?",
+    type: "Activities",
+    cover: require("./assets/covers/yoga.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "WaterSports",
+    title: "Surfing,Wind Surfing..",
+    subtitle: "Select your gear and go with the current!",
+    type: "WaterSports",
+    cover: require("./assets/covers/watersport.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Children",
+    title: "Children activities, Babysit",
+    subtitle: "Best experiences for children",
+    type: "Children",
+    cover: require("./assets/covers/children.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Fitness",
+    title: "Personal Trainers",
+    subtitle: "Need to stay in shape?",
+    type: "Fitness",
+    cover: require("./assets/covers/personal.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Wine",
+    title: "Wine Tasting",
+    subtitle: "Try out our local and amazing flavors!!",
+    type: "Wine",
+    cover: require("./assets/covers/winetasting.jpg")
   },
   {
-    id: "minding-the-gap",
-    title: "Minding the Gap: An American Stakeboarding Story",
-    subtitle: "A coming-of-age saga",
-    type: "Film",
-    cover: require("./assets/covers/minding-the-gap.jpg")
+    id: "Restaurants",
+    title: "Make your reservation now",
+    subtitle: "Pick your cuisine and book your table!",
+    type: "Restaurants",
+    cover: require("./assets/covers/restaurants.jpg")
   }
 ];
 
@@ -163,6 +163,7 @@ const BotMaterialNavigator = createMaterialBottomTabNavigator(
     // activeColor: "green",
     inactiveColor: "white",
     // shifting: false,
+
     barStyle: { backgroundColor: "#2C2F32" },
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: (focused, horizontal, tintColor) => {

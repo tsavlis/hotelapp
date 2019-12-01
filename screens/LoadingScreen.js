@@ -23,7 +23,7 @@ class LoadingScreen extends Component {
         // console.log("AUTH STATE CHANGED CALLED ");
         if (user) {
           //console.log(user);
-          this.props.navigation.navigate("home", {
+          this.props.navigation.navigate("services", {
             user: user.email
           });
         } else {
