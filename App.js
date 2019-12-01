@@ -21,7 +21,108 @@ import { Provider } from "react-redux";
 import store from "./src/store/store";
 import { firebaseConfig } from "./src/config/config";
 
+import Channels from "./components/Channels";
+import LoadAssets from "./components/LoadAssets";
+const channels = [
+  {
+    id: "killing-eve",
+    title: "Killing Eve",
+    subtitle: "Sorry baby, xoxo",
+    type: "Drama",
+    cover: require("./assets/covers/killing-eve.jpg")
+  },
+  {
+    id: "atlanta",
+    title: "Atlanta",
+    subtitle: "Can Earn work his way to success?",
+    type: "Comedy",
+    cover: require("./assets/covers/atlanta.jpg")
+  },
+  {
+    id: "years-and-years",
+    title: "Years and years",
+    subtitle: "Can a family survive the future?",
+    type: "Drama",
+    cover: require("./assets/covers/years-and-years.jpg")
+  },
+  {
+    id: "gentleman-jack",
+    title: "Gentleman Jack",
+    subtitle: "The true story of a remarkable woman in search of a wife",
+    type: "Period Drama",
+    cover: require("./assets/covers/gentleman-jack.jpg")
+  },
+  {
+    id: "london-kills",
+    title: "London Kills",
+    subtitle: "A Met Police murder squad face intense cases",
+    type: "Crime Drama",
+    cover: require("./assets/covers/london-kills.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  },
+  {
+    id: "minding-the-gap",
+    title: "Minding the Gap: An American Stakeboarding Story",
+    subtitle: "A coming-of-age saga",
+    type: "Film",
+    cover: require("./assets/covers/minding-the-gap.jpg")
+  }
+];
+
 firebase.initializeApp(firebaseConfig);
+class Load extends React.Component {
+  render() {
+    return <Channels {...{ channels }} />;
+  }
+}
 export default class App extends React.Component {
   state = {
     fontloaded: false,
@@ -41,30 +142,20 @@ export default class App extends React.Component {
     // return Promise.all(cacheImages);
   };
   render() {
-    if (!this.state.fontloaded && !this.state.isLoadingComplete) {
-      return (
-        <AppLoading
-          startAsync={this.handleResourcesAsync}
-          onError={error => console.warn(error)}
-          onFinish={() =>
-            this.setState({ isLoadingComplete: true, fontloaded: true })
-          }
-        />
-      );
-    } else {
-      return (
+    return (
+      <LoadAssets assets={channels.map(channel => channel.cover)}>
         <Provider store={store}>
           <AppNavigator />
         </Provider>
-      );
-    }
+      </LoadAssets>
+    );
   }
 }
 
 const BotMaterialNavigator = createMaterialBottomTabNavigator(
   {
     home: { screen: DashboardScreen },
-    services: { screen: RoomService },
+    services: { screen: Load },
     transfers: { screen: Transfers },
     account: { screen: Profile }
   },

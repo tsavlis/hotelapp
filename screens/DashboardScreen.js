@@ -29,7 +29,7 @@ class DashboardScreen extends Component {
                 10 August - 16 August
               </TexT>
               <TexT gray caption>
-                your reservation
+                Your reservation
               </TexT>
             </Card>
 
