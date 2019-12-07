@@ -10,7 +10,7 @@ class LoadingScreen extends Component {
     this.animation.play();
     setTimeout(() => {
       this.checkIfLoggedIn();
-    }, 3000);
+    }, 1500);
   }
 
   resetAnimation = () => {

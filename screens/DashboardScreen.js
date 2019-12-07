@@ -7,10 +7,34 @@ import home from "../assets/home.jpg";
 import TexT from "../src/components/Text";
 import FadeInView from "./FadeInView";
 import Card from "../src/components/Card";
-
+import { Button } from "react-native-elements";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import { firebaseConfig } from "../src/config/config";
 const { width, height } = Dimensions.get("window");
+firebase.initializeApp(firebaseConfig);
+const dbh = firebase.firestore();
 
 class DashboardScreen extends Component {
+  addToFirestore = () => {
+    dbh
+      .collection("projects")
+      .add({
+        title: "Clean room",
+        content: "room is very dirty",
+        authorFirstName: "thanos",
+        authorLastName: "tsavlis",
+        authorId: "12344",
+        createdAt: new Date()
+      })
+      .then(resp => {
+        console.log("done", resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log("123");
+  };
   render() {
     return (
       <ImageBackground style={styles.image} source={home}>
@@ -53,6 +77,7 @@ class DashboardScreen extends Component {
                 Explore..
               </Text>
             </FadeInView>
+            <Button onPress={this.addToFirestore} title="add" />
           </View>
         </View>
       </ImageBackground>

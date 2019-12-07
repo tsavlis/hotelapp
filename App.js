@@ -3,14 +3,13 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import "firebase/firestore";
+import firebase from "firebase";
 
 import LoginScreen from "./screens/LoginScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import LoadingScreen from "./screens/LoadingScreen";
-import * as firebase from "firebase";
 import * as Font from "expo-font";
-import { AppLoading } from "expo";
-import Asset from "expo-asset";
 import Checkin from "./screens/Checkin";
 import Transfers from "./screens/Transfers";
 
@@ -19,8 +18,6 @@ import RoomService from "./screens/RoomService";
 
 import { Provider } from "react-redux";
 import store from "./src/store/store";
-import { firebaseConfig } from "./src/config/config";
-
 import Channels from "./components/Channels";
 import LoadAssets from "./components/LoadAssets";
 const channels = [
@@ -117,7 +114,6 @@ const channels = [
   }
 ];
 
-firebase.initializeApp(firebaseConfig);
 class Load extends React.Component {
   render() {
     return <Channels {...{ channels }} />;
@@ -141,9 +137,25 @@ export default class App extends React.Component {
 
     // return Promise.all(cacheImages);
   };
-  componentDidMount() {
-    //firebase.auth().signOut();
-  }
+  componentDidMount() {}
+  addToFirestore = () => {
+    // dbh
+    //   .collection("projects")
+    //   .add({
+    //     title: "Clean room",
+    //     content: "room is very dirty",
+    //     authorFirstName: "thanos",
+    //     authorLastName: "tsavlis",
+    //     authorId: "12344",
+    //     createdAt: new Date()
+    //   })
+    //   .then(resp => {
+    //     console.log("done", resp);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  };
 
   render() {
     return (
@@ -202,9 +214,9 @@ const AppSwitchNavigator = createSwitchNavigator(
   }
 );
 
-const Stack = createStackNavigator({
-  main: AppSwitchNavigator,
-  Checkin
-});
+// const Stack = createStackNavigator({
+//   main: AppSwitchNavigator,
+//   Checkin
+// });
 
-const AppNavigator = createAppContainer(Stack);
+const AppNavigator = createAppContainer(AppSwitchNavigator);
