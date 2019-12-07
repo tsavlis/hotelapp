@@ -141,6 +141,10 @@ export default class App extends React.Component {
 
     // return Promise.all(cacheImages);
   };
+  componentDidMount() {
+    //firebase.auth().signOut();
+  }
+
   render() {
     return (
       <LoadAssets assets={channels.map(channel => channel.cover)}>

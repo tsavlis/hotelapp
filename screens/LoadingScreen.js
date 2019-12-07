@@ -7,9 +7,10 @@ import { connect } from "react-redux";
 class LoadingScreen extends Component {
   async componentDidMount() {
     await this.props.getServices();
-
-    this.checkIfLoggedIn();
     this.animation.play();
+    setTimeout(() => {
+      this.checkIfLoggedIn();
+    }, 3000);
   }
 
   resetAnimation = () => {
@@ -23,7 +24,7 @@ class LoadingScreen extends Component {
         // console.log("AUTH STATE CHANGED CALLED ");
         if (user) {
           //console.log(user);
-          this.props.navigation.navigate("services", {
+          this.props.navigation.navigate("home", {
             user: user.email
           });
         } else {
