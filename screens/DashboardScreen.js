@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, Image, Dimensions } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
@@ -7,35 +7,26 @@ import home from "../assets/home.jpg";
 import TexT from "../src/components/Text";
 import FadeInView from "./FadeInView";
 import Card from "../src/components/Card";
-import { Button } from "react-native-elements";
 import firebase from "firebase/app";
 import "firebase/firestore";
+
 import { firebaseConfig } from "../src/config/config";
-const { width, height } = Dimensions.get("window");
 firebase.initializeApp(firebaseConfig);
 const dbh = firebase.firestore();
 
 class DashboardScreen extends Component {
-  addToFirestore = () => {
+  componentDidMount() {
     dbh
-      .collection("projects")
-      .add({
-        title: "Clean room",
-        content: "room is very dirty",
-        authorFirstName: "thanos",
-        authorLastName: "tsavlis",
-        authorId: "12344",
-        createdAt: new Date()
-      })
-      .then(resp => {
-        console.log("done", resp);
-      })
-      .catch(err => {
-        console.log(err);
+      .collection("users")
+      .doc(this.props.auth.uid)
+      .get()
+      .then(doc => {
+        this.props.getInfoForUser(doc._document.proto);
+        console.log(doc._document.proto.fields);
       });
-    console.log("123");
-  };
+  }
   render() {
+    const { auth } = this.props;
     return (
       <ImageBackground style={styles.image} source={home}>
         <View style={styles.container}>
@@ -45,9 +36,12 @@ class DashboardScreen extends Component {
               justifyContent: "space-evenly"
             }}
           >
-            <Text style={styles.text}>
-              Hi {this.props.navigation.getParam("user", "default value")}
-            </Text>
+            {auth ? (
+              <Text style={styles.text}>Hi {auth.email}</Text>
+            ) : (
+              <Text style={styles.text}>Hi Guest</Text>
+            )}
+
             <Card center middle shadow style={{ flex: 0.1 }}>
               <TexT medium height={40}>
                 10 August - 16 August
@@ -77,7 +71,6 @@ class DashboardScreen extends Component {
                 Explore..
               </Text>
             </FadeInView>
-            <Button onPress={this.addToFirestore} title="add" />
           </View>
         </View>
       </ImageBackground>
@@ -85,13 +78,16 @@ class DashboardScreen extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    services: state.services.services
+    auth: state.auth.auth
   };
 };
-
-export default connect(mapStateToProps, actions)(DashboardScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    getInfoForUser: user => dispatch(actions.getInfoForUser(user))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);
 
 const styles = {
   container: {
@@ -128,7 +124,7 @@ const styles = {
     flex: 1
   },
   text: {
-    fontSize: 30,
+    fontSize: 26,
     fontFamily: "regu1",
     color: "white"
     // marginBottom: 150

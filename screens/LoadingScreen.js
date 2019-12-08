@@ -6,7 +6,8 @@ import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
 class LoadingScreen extends Component {
   async componentDidMount() {
-    await this.props.getServices();
+    //  await this.props.getServices();
+    // firebase.auth().signOut();
     this.animation.play();
     setTimeout(() => {
       this.checkIfLoggedIn();
@@ -23,10 +24,10 @@ class LoadingScreen extends Component {
       function(user) {
         // console.log("AUTH STATE CHANGED CALLED ");
         if (user) {
-          //console.log(user);
-          this.props.navigation.navigate("home", {
-            user: user.email
-          });
+          this.props.handleAuthUser(user);
+
+          // console.log(user);
+          this.props.navigation.navigate("home");
         } else {
           this.props.navigation.navigate("LoginScreen");
         }
@@ -58,11 +59,16 @@ class LoadingScreen extends Component {
 const mapStateToProps = state => {
   // console.log(state);
   return {
-    services: state.services
+    //services: state.services
   };
 };
 
-export default connect(mapStateToProps, actions)(LoadingScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    handleAuthUser: user => dispatch(actions.handleAuthUser(user))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingScreen);
 
 const styles = StyleSheet.create({
   animationContainer: {

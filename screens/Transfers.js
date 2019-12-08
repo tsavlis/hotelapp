@@ -1,14 +1,45 @@
 import React, { Component } from "react";
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { Button } from "react-native-elements";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
 import Block from "../src/components/Block";
+import firebase from "firebase/app";
+import "firebase/firestore";
+const dbh = firebase.firestore();
+
 class Transfers extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    id: ""
+  };
+  addToFirestore = () => {
+    const { userInfo, auth } = this.props;
+    dbh
+      .collection("projects")
+      .add({
+        title: "Clean room",
+        content: "room is very dirty",
+        authorFirstName: userInfo.firstName.stringValue,
+        authorLastName: userInfo.lastName.stringValue,
+        authorId: auth.uid,
+        createdAt: new Date()
+      })
+      .then(resp => {
+        console.log("done", resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <Block block center middle>
-        <Text> Transfers </Text>
+        <Text> Make Request </Text>
+        <Button onPress={this.addToFirestore} title="Create new Task" />
       </Block>
     );
   }
@@ -16,7 +47,8 @@ class Transfers extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    services: state.services.services
+    auth: state.auth.auth,
+    userInfo: state.auth.userInfo.fields
   };
 };
 

@@ -1,4 +1,4 @@
-// import * as actionTypes from "./actionTypes";
+import * as actionTypes from "./actionTypes";
 // import axios from "axios";
 // import { headers } from "../../config/config";
 // import { getEnviroment } from "../../config/config";
@@ -69,3 +69,19 @@
 //       });
 //   };
 // };
+export const getInfoForUser = userinfo => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: actionTypes.GET_USER_INFO,
+      payload: userinfo
+    });
+  };
+};
+export const handleAuthUser = user => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: actionTypes.AUTH_HANDLE_USER,
+      payload: user
+    });
+  };
+};

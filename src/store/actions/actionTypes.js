@@ -3,3 +3,5 @@
 // export const AUTH_LOGIN_START = "AUTH_LOGIN_START";
 
 export const GET_SERVICES = "GET_SERVICES";
+export const AUTH_HANDLE_USER = "AUTH_HANDLE_USER";
+export const GET_USER_INFO = "GET_USER_INFO";

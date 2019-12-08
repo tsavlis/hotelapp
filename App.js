@@ -5,7 +5,7 @@ import { createMaterialBottomTabNavigator } from "react-navigation-material-bott
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import "firebase/firestore";
 import firebase from "firebase";
-
+import { YellowBox } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import LoadingScreen from "./screens/LoadingScreen";
@@ -113,6 +113,7 @@ const channels = [
     cover: require("./assets/covers/restaurants.jpg")
   }
 ];
+console.disableYellowBox = true;
 
 class Load extends React.Component {
   render() {
