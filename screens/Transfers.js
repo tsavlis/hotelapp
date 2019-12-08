@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
-import { Button } from "react-native-elements";
+import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
+import { Button, Input } from "react-native-elements";
 
 import * as actions from "../src/store/actions";
 import { connect } from "react-redux";
@@ -13,15 +13,19 @@ class Transfers extends Component {
   state = {
     firstName: "",
     lastName: "",
-    id: ""
+    id: "",
+    title: "",
+    content: "",
+    loading: false
   };
   addToFirestore = () => {
     const { userInfo, auth } = this.props;
+    this.setState({ loading: true });
     dbh
       .collection("projects")
       .add({
-        title: "Clean room",
-        content: "room is very dirty",
+        title: this.state.title,
+        content: this.state.content,
         authorFirstName: userInfo.firstName.stringValue,
         authorLastName: userInfo.lastName.stringValue,
         authorId: auth.uid,
@@ -29,23 +33,56 @@ class Transfers extends Component {
       })
       .then(resp => {
         console.log("done", resp);
+        this.setState({ loading: false });
       })
       .catch(err => {
         console.log(err);
+        this.setState({ loading: false });
       });
   };
-
+  handleChange = name => event => {
+    this.setState({ [name]: event });
+  };
   render() {
+    if (this.state.loading) {
+      return (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color="bluegray" />
+        </View>
+      );
+    }
     return (
       <Block block center middle>
-        <Text> Make Request </Text>
+        <View style={{ width: "80%", padding: 10, margin: 10 }}>
+          <Input
+            placeholder="Title"
+            label="Title"
+            value={this.state.title}
+            id={"title"}
+            onChangeText={this.handleChange("title")}
+          />
+        </View>
+
+        <View style={{ width: "80%", padding: 10, margin: 10 }}>
+          <Input
+            placeholder="Content"
+            label="Content"
+            value={this.state.content}
+            id={"content"}
+            style={{ width: "80%", padding: 10, margin: 10 }}
+            onChangeText={this.handleChange("content")}
+          />
+        </View>
+
         <Button onPress={this.addToFirestore} title="Create new Task" />
       </Block>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
+  //console.log(state);
   return {
     auth: state.auth.auth,
     userInfo: state.auth.userInfo.fields

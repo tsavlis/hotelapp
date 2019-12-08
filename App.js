@@ -173,7 +173,7 @@ const BotMaterialNavigator = createMaterialBottomTabNavigator(
   {
     home: { screen: DashboardScreen },
     services: { screen: Load },
-    transfers: { screen: Transfers },
+    requests: { screen: Transfers },
     account: { screen: Profile }
   },
   {
@@ -192,7 +192,7 @@ const BotMaterialNavigator = createMaterialBottomTabNavigator(
           iconName = `user`;
         } else if (routeName === "services") {
           iconName = `glass`;
-        } else if (routeName === "transfers") {
+        } else if (routeName === "requests") {
           iconName = `taxi`;
         }
 
